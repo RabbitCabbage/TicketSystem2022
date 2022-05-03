@@ -1,6 +1,3 @@
-# TicketSystem2022
-ACMClassCourse-2021 TicketSystem hnyls2002&RabbitCabbage
-
 # ACM TrainTicketSystem 开发文档
 ***
 
@@ -38,6 +35,10 @@ ACMClassCourse-2021 TicketSystem hnyls2002&RabbitCabbage
 - `linked_list.hpp` **一个基于文件读写的链表**
     
 ***
+
+### 流程图
+
+![](https://notes.sjtu.edu.cn/uploads/upload_e71802e9cb23d446dbdc87cf8ae40b2d.png)
 
 ## 类和成员的设计（逻辑部分）
 
@@ -154,7 +155,7 @@ ACMClassCourse-2021 TicketSystem hnyls2002&RabbitCabbage
 
     用于存储火车的时间。
 
-## 函数接口
+## 函数接口（逻辑部分）
 
 ### 火车票系统主体`/src/System.hpp` 
 
@@ -196,10 +197,13 @@ template<typename T> void sort(T *,T *,T (*cmp)(cosnt T&,const T&))
 int StrToInt(std::string);
 std::string IntToStr(int);
 ```
-## 存储部分
+
+## 存储部分 
+
 理论上直接调用B+树或者调用缓存是同样的效果
 逻辑部分在调用时不用知道是调用了直接读写到文件的B+树还是缓存了
-可以考虑#difine CacheMap bptree 即可
+可以考虑`#difine CacheMap bptree` 即可
+
 ### B+ Tree
 
 文件读写部分由董珅(@RabbitCabbage)负责
@@ -340,10 +344,16 @@ public:
 
     //返回现在总共有多少条记录
     int GetSize() {}
-};```
+};
+```
+
+### 基于文件读写的链表
+
 文件存储的链表类，支持读头尾节点，以及按照插入顺序依次读取所有记录
 每一个List会对应一个用户，维护这个用户的所有订单信息
 所有用户的订单信息链表存在一个文档里
+
+
 ```cpp=
 
 template <typename T>//T是一个定长的信息结构体
